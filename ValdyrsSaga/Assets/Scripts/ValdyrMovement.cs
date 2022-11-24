@@ -7,12 +7,19 @@ public class ValdyrMovement : MonoBehaviour
     [SerializeField] float moveSpeed = 5f;
     Rigidbody2D valdyrRigidbody;
     Animator valdyrAnimator;
+    public ValdyrState currentState;
     Vector3 moveChange;
+
+    public enum ValdyrState{
+        walk,
+        attack
+    }
     void Start()
     {
+        currentState = ValdyrState.walk;
         valdyrRigidbody = GetComponent<Rigidbody2D>();
         valdyrAnimator = GetComponent<Animator>();
-        valdyrAnimator.SetBool("isWalking", false);
+        
     }
 
     void Update()
@@ -20,7 +27,24 @@ public class ValdyrMovement : MonoBehaviour
         moveChange = Vector3.zero;
         moveChange.x = Input.GetAxisRaw("Horizontal");
         moveChange.y = Input.GetAxisRaw("Vertical");
-        BlendIdleandWalk();
+
+        if(Input.GetButton("attack") && currentState!=ValdyrState.attack){
+            StartCoroutine(Attacking());
+        }
+        else if(currentState==ValdyrState.walk){
+            BlendIdleandWalk();
+        }
+    }
+
+    IEnumerator Attacking()
+    {
+        valdyrAnimator.SetBool("isAttacking", true);
+        currentState = ValdyrState.attack;
+        yield return new WaitForSeconds(.13f);
+        valdyrAnimator.SetBool("isAttacking", false);
+        // yield return new WaitForSeconds(0.33f);
+        currentState = ValdyrState.walk;
+        Debug.Log("Attacking");
     }
 
     void BlendIdleandWalk()

@@ -50,3 +50,6 @@ TagManager:
   - name: Player
     uniqueID: 666877913
     locked: 0
+  - name: HighUp
+    uniqueID: 3253898321
+    locked: 0
