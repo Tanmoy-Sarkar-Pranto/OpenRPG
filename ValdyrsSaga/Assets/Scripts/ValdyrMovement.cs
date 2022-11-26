@@ -19,7 +19,8 @@ public class ValdyrMovement : MonoBehaviour
         currentState = ValdyrState.walk;
         valdyrRigidbody = GetComponent<Rigidbody2D>();
         valdyrAnimator = GetComponent<Animator>();
-        
+        valdyrAnimator.SetFloat("moveX", 0);
+        valdyrAnimator.SetFloat("moveY", -1);
     }
 
     void Update()
@@ -28,7 +29,7 @@ public class ValdyrMovement : MonoBehaviour
         moveChange.x = Input.GetAxisRaw("Horizontal");
         moveChange.y = Input.GetAxisRaw("Vertical");
 
-        if(Input.GetButton("attack") && currentState!=ValdyrState.attack){
+        if(Input.GetButtonDown("attack") && currentState!=ValdyrState.attack){
             StartCoroutine(Attacking());
         }
         else if(currentState==ValdyrState.walk){
@@ -38,13 +39,19 @@ public class ValdyrMovement : MonoBehaviour
 
     IEnumerator Attacking()
     {
-        valdyrAnimator.SetBool("isAttacking", true);
+        // valdyrAnimator.SetBool("isAttacking", true);
+        // currentState = ValdyrState.attack;
+        // yield return null;
+        // valdyrAnimator.SetBool("isAttacking", false);
+        // yield return new WaitForSeconds(0.4f);
+        // currentState = ValdyrState.walk;
+        // Debug.Log("Attacking");
+
+        valdyrAnimator.SetTrigger("Attack");
         currentState = ValdyrState.attack;
-        yield return new WaitForSeconds(.13f);
-        valdyrAnimator.SetBool("isAttacking", false);
-        // yield return new WaitForSeconds(0.33f);
+        yield return new WaitForSeconds(.4f);
         currentState = ValdyrState.walk;
-        Debug.Log("Attacking");
+        valdyrAnimator.SetTrigger("Idle");
     }
 
     void BlendIdleandWalk()
