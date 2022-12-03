@@ -27,7 +27,7 @@ public class RoomTransition : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("Player")){
+        if(other.CompareTag("Player") && !other.isTrigger){
             Vector2 actualChangeMax = maxCameraChange-cameraMovement.maxCameraPosition;
             Vector2 actualChangeMin = minCameraChange-cameraMovement.minCameraPosition;
             cameraMovement.maxCameraPosition += actualChangeMax;

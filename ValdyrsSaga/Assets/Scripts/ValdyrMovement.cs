@@ -11,8 +11,10 @@ public class ValdyrMovement : MonoBehaviour
     Vector3 moveChange;
 
     public enum ValdyrState{
+        idle,
         walk,
-        attack
+        attack,
+        stagger
     }
     void Start()
     {
@@ -29,10 +31,10 @@ public class ValdyrMovement : MonoBehaviour
         moveChange.x = Input.GetAxisRaw("Horizontal");
         moveChange.y = Input.GetAxisRaw("Vertical");
 
-        if(Input.GetButtonDown("attack") && currentState!=ValdyrState.attack){
+        if(Input.GetButtonDown("attack") && currentState!=ValdyrState.attack && currentState!=ValdyrState.stagger){
             StartCoroutine(Attacking());
         }
-        else if(currentState==ValdyrState.walk){
+        else if(currentState==ValdyrState.walk || currentState == ValdyrState.idle){
             BlendIdleandWalk();
         }
     }
@@ -73,4 +75,17 @@ public class ValdyrMovement : MonoBehaviour
             valdyrRigidbody.MovePosition(newPosition);
             valdyrAnimator.SetBool("isWalking", true);
     }
+
+    public void knock(float knockTime)
+    {
+        StartCoroutine(KnockCO(knockTime));
+    }
+
+    IEnumerator KnockCO(float knockTime){
+        if(valdyrRigidbody!=null){
+            yield return new WaitForSeconds(knockTime);
+            valdyrRigidbody.velocity = Vector2.zero;
+            currentState = ValdyrState.idle;
+        }
+    } 
 }
