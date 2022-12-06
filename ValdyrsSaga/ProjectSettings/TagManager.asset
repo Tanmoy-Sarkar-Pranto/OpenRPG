@@ -49,6 +49,9 @@ TagManager:
   - name: Collidable
     uniqueID: 4258277617
     locked: 0
+  - name: Signs
+    uniqueID: 3146619365
+    locked: 0
   - name: Player
     uniqueID: 666877913
     locked: 0

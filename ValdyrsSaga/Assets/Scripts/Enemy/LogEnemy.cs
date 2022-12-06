@@ -10,6 +10,7 @@ public class LogEnemy : Enemy
     [SerializeField] Vector3 homePosition;
     Rigidbody2D logRigidBody;
     
+    
     bool shouldChase=false;
     Animator logAnimator;
     void Start()

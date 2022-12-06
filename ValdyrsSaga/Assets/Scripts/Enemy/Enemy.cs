@@ -12,14 +12,29 @@ public enum EnemmyState{
 public class Enemy : MonoBehaviour
 {
     public EnemmyState currentState;
-    public int health;
+    public float health;
     public string enemyName;
     public int baseAttack;
     public float chaseSpeed;
     public float moveSpeed;
-    
-    public void knock(Rigidbody2D myRigidBody, float knockTime){
+    public FloatValue maxHealth;
+
+    void Awake()
+    {
+        health = maxHealth.initialValue;
+    }
+
+    void TakeDamage(float damage)
+    {
+        health -= damage;
+        if(health <= 0){
+            this.gameObject.SetActive(false);
+        }
+    }
+
+    public void knock(Rigidbody2D myRigidBody, float knockTime, float damage){
         StartCoroutine(KnockCO(myRigidBody,knockTime));
+        TakeDamage(damage);
     }
     IEnumerator KnockCO(Rigidbody2D myRigidBody, float knockTime){
         if(myRigidBody!=null){

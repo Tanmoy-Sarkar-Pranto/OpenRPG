@@ -13,6 +13,7 @@ public class ValdyrMovement : MonoBehaviour
     public enum ValdyrState{
         idle,
         walk,
+        interact,
         attack,
         stagger
     }
@@ -31,7 +32,7 @@ public class ValdyrMovement : MonoBehaviour
         moveChange.x = Input.GetAxisRaw("Horizontal");
         moveChange.y = Input.GetAxisRaw("Vertical");
 
-        if(Input.GetButtonDown("attack") && currentState!=ValdyrState.attack && currentState!=ValdyrState.stagger){
+        if(Input.GetButtonDown("attack") && currentState!=ValdyrState.attack && currentState!=ValdyrState.stagger && currentState!=ValdyrState.interact){
             StartCoroutine(Attacking());
         }
         else if(currentState==ValdyrState.walk || currentState == ValdyrState.idle){
