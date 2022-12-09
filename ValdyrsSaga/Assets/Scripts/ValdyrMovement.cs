@@ -9,6 +9,9 @@ public class ValdyrMovement : MonoBehaviour
     Animator valdyrAnimator;
     public ValdyrState currentState;
     Vector3 moveChange;
+    [SerializeField] FloatValue valdyrHealth;
+    [SerializeField] SignalSender valdyrHealthSignal;
+    public VectorValue startingPosition;
 
     public enum ValdyrState{
         idle,
@@ -24,6 +27,7 @@ public class ValdyrMovement : MonoBehaviour
         valdyrAnimator = GetComponent<Animator>();
         valdyrAnimator.SetFloat("moveX", 0);
         valdyrAnimator.SetFloat("moveY", -1);
+        transform.position = startingPosition.initialValue;
     }
 
     void Update()
@@ -77,9 +81,17 @@ public class ValdyrMovement : MonoBehaviour
             valdyrAnimator.SetBool("isWalking", true);
     }
 
-    public void knock(float knockTime)
+    public void knock(float knockTime, float damage)
     {
-        StartCoroutine(KnockCO(knockTime));
+        valdyrHealth.runtimeValue -= damage;
+        valdyrHealthSignal.Raise();
+        if(valdyrHealth.runtimeValue > 0){
+            
+            StartCoroutine(KnockCO(knockTime));
+        }
+        else{
+            this.gameObject.SetActive(false);
+        }
     }
 
     IEnumerator KnockCO(float knockTime){

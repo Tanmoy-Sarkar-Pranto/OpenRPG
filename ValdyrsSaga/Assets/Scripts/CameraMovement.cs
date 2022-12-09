@@ -10,7 +10,7 @@ public class CameraMovement : MonoBehaviour
     public Vector2 minCameraPosition;
     void Start()
     {
-        
+        transform.position = new Vector3(valdyr.position.x, valdyr.position.y, transform.position.z);
     }
 
     // Update is called once per frame

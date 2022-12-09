@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class Sign : MonoBehaviour
+public class Sign : Interactable
 {
     [SerializeField] GameObject dialogBox;
     [SerializeField] Text dialogText;
     [SerializeField] string dialog;
-    bool playerInRange;
+    
     ValdyrMovement valdyrMovement;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -31,18 +33,12 @@ public class Sign : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("Player")){
-            // Debug.Log("Player in Range");
-            playerInRange = true;
-        }    
-    }
-
     private void OnTriggerExit2D(Collider2D other) {
         if(other.CompareTag("Player")){
             // Debug.Log("Player out of range");
             playerInRange = false;
             dialogBox.SetActive(false);
+            clueSignOff.Raise();
         }
     }
 }

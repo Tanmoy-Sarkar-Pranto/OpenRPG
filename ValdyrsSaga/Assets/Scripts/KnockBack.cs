@@ -29,8 +29,10 @@ public class KnockBack : MonoBehaviour
                     other.GetComponent<Enemy>().knock(myRigidBody, knockTime, damage);
                 }
                 if(other.gameObject.CompareTag("Player")){
-                    myRigidBody.GetComponent<ValdyrMovement>().currentState = ValdyrMovement.ValdyrState.stagger;
-                    other.GetComponent<ValdyrMovement>().knock(knockTime);
+                    if(other.GetComponent<ValdyrMovement>().currentState != ValdyrMovement.ValdyrState.stagger){
+                        myRigidBody.GetComponent<ValdyrMovement>().currentState = ValdyrMovement.ValdyrState.stagger;
+                        other.GetComponent<ValdyrMovement>().knock(knockTime, damage);
+                    }
                 }
                 Vector2 distance = myRigidBody.transform.position - transform.position;
                 distance = distance.normalized * knockBack;
