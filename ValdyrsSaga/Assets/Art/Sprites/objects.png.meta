@@ -308,10 +308,10 @@ TextureImporter:
       name: objects_9
       rect:
         serializedVersion: 2
-        x: 182
+        x: 181
         y: 304
-        width: 21
-        height: 15
+        width: 22
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -606,8 +606,8 @@ TextureImporter:
         y: 279
         width: 22
         height: 18
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.50413513, y: 0.4494629}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -627,8 +627,8 @@ TextureImporter:
         y: 279
         width: 22
         height: 18
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4494629}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3507,6 +3507,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      objects_4: -972544521
       objects_118: 567823611
       objects_98: 846408786
       objects_84: -1210295608
@@ -3524,7 +3525,6 @@ TextureImporter:
       objects_41: 631785077
       objects_89: 1527864798
       objects_109: -1159203198
-      objects_20: -192670692
       objects_3: -633558241
       objects_119: 1446110328
       objects_145: -520692683
@@ -3582,10 +3582,10 @@ TextureImporter:
       objects_131: 68841963
       objects_87: -1139385440
       objects_104: 1134894752
-      objects_107: -1766395692
       objects_7: 2027444525
-      objects_146: 134228214
       objects_80: 1652320238
+      objects_146: 134228214
+      objects_107: -1766395692
       objects_22: -1806845518
       objects_47: 690504813
       objects_42: -1331996631
@@ -3665,9 +3665,9 @@ TextureImporter:
       objects_142: -1077183826
       objects_61: -170727239
       objects_88: -689457094
-      objects_4: -972544521
       objects_127: 1662166563
       objects_128: 1328854734
+      objects_20: -192670692
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

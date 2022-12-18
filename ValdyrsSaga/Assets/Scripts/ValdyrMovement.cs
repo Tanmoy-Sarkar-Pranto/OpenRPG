@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ValdyrMovement : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 5f;
+    [SerializeField] float moveSpeed = 9f;
     Rigidbody2D valdyrRigidbody;
     Animator valdyrAnimator;
     public ValdyrState currentState;
@@ -12,6 +12,8 @@ public class ValdyrMovement : MonoBehaviour
     [SerializeField] FloatValue valdyrHealth;
     [SerializeField] SignalSender valdyrHealthSignal;
     public VectorValue startingPosition;
+    public Inventory valdyrInventory;
+    public SpriteRenderer receivedItemSprite;
 
     public enum ValdyrState{
         idle,
@@ -100,5 +102,21 @@ public class ValdyrMovement : MonoBehaviour
             valdyrRigidbody.velocity = Vector2.zero;
             currentState = ValdyrState.idle;
         }
-    } 
+    }
+
+    public void RaiseReceivedItem()
+    {
+        // if(valdyrInventory.currentItem !=null){
+            if(currentState != ValdyrState.interact){
+                valdyrAnimator.SetBool("itemReceive", true);
+                currentState = ValdyrState.interact;
+                receivedItemSprite.sprite = valdyrInventory.currentItem.itemSprite;
+            }else{
+                valdyrAnimator.SetBool("itemReceive", false);
+                currentState = ValdyrState.idle;
+                receivedItemSprite.sprite = null;
+                valdyrInventory.currentItem = null;
+            }
+        }
+    // } 
 }

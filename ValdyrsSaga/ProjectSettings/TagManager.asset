@@ -46,6 +46,9 @@ TagManager:
   - name: Ground
     uniqueID: 2612852299
     locked: 0
+  - name: Water
+    uniqueID: 2864948165
+    locked: 0
   - name: Collidable
     uniqueID: 4258277617
     locked: 0
