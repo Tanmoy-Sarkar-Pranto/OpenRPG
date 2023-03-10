@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class LogEnemy : Enemy
 {
-    [SerializeField] Transform target;
-    [SerializeField] float chaseRadius;
-    [SerializeField] float attackRadius;
-    [SerializeField] Vector3 homePosition;
-    Rigidbody2D logRigidBody;
+    public Transform target;
+    public float chaseRadius;
+    public float attackRadius;
+    public Vector3 homePosition;
+    public Rigidbody2D logRigidBody;
     
     
-    bool shouldChase=false;
-    Animator logAnimator;
+    public bool shouldChase=false;
+    public Animator logAnimator;
     void Start()
     {
         currentState = EnemmyState.idle;
         logRigidBody = GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player").transform;
         logAnimator = GetComponent<Animator>();
+        logAnimator.SetBool("isInterrupted", true);
     }
 
     void FixedUpdate()
@@ -26,7 +27,7 @@ public class LogEnemy : Enemy
         CheckDistance();
     }
 
-    void CheckDistance() {
+    public virtual void CheckDistance() {
         if (Vector3.Distance(target.position, transform.position)<=chaseRadius){
             if((currentState == EnemmyState.idle || currentState == EnemmyState.walk) && currentState != EnemmyState.stagger){
                 logAnimator.SetBool("isInterrupted", true);
@@ -40,7 +41,7 @@ public class LogEnemy : Enemy
         Chase();
     }
 
-    void Chase()
+    public virtual void Chase()
     {
         if(shouldChase==true){
             if(transform.position != target.position && Vector3.Distance(target.position, transform.position)> attackRadius){
@@ -59,18 +60,18 @@ public class LogEnemy : Enemy
         }
     }
 
-    void ChangeState(EnemmyState newState){
+    public void ChangeState(EnemmyState newState){
         if(currentState != newState){
             currentState = newState;
         }
     }
 
-    void SetAnimFloat(Vector2 setVector){
+    public void SetAnimFloat(Vector2 setVector){
         logAnimator.SetFloat("moveX",setVector.x);
         logAnimator.SetFloat("moveY",setVector.y);
     }
 
-    void changeAnim(Vector2 direction){
+    public void changeAnim(Vector2 direction){
         if(Mathf.Abs(direction.x)>Mathf.Abs(direction.y)){
             if(direction.x > 0){
                 SetAnimFloat(Vector2.right);

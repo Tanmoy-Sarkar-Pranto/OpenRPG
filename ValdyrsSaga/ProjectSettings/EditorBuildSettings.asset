@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Room.unity
     guid: a83ef28bad5123d4a9749130d3f2ef9a
+  - enabled: 1
+    path: Assets/Levels/Dungeon.unity
+    guid: e85d16be12f4f8241a3bcebc1160fd7e
   m_configObjects: {}
