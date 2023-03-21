@@ -49395,11 +49395,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7036316107586990485, guid: a172aa278b0c90c4b8fa09324a2523c0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -66.91
+      value: -66.86
       objectReference: {fileID: 0}
     - target: {fileID: 7036316107586990485, guid: a172aa278b0c90c4b8fa09324a2523c0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.82
+      value: 12.88
       objectReference: {fileID: 0}
     - target: {fileID: 7036316107586990485, guid: a172aa278b0c90c4b8fa09324a2523c0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -76091,6 +76091,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 302630665293095106, guid: 09f8cac9afb0a424da762a45910d4b89, type: 3}
+      propertyPath: health
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 302630665293095110, guid: 09f8cac9afb0a424da762a45910d4b89, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -76159,7 +76163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  health: 5
+  health: 2
   enemyName: Patrol Log Dude
   baseAttack: 1
   chaseSpeed: 3
@@ -76168,7 +76172,7 @@ MonoBehaviour:
   target: {fileID: 0}
   chaseRadius: 10
   attackRadius: 1
-  homePosition: {x: 0, y: 0, z: 0}
+  homePosition: {x: -19.05, y: -5.68, z: 0}
   logRigidBody: {fileID: 0}
   shouldChase: 0
   logAnimator: {fileID: 0}
@@ -76305,6 +76309,14 @@ PrefabInstance:
     - target: {fileID: 3342430071827621962, guid: 759e18371f22fa24dbf3d91b73d7e6e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3342430071827621963, guid: 759e18371f22fa24dbf3d91b73d7e6e0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3342430071827623856, guid: 759e18371f22fa24dbf3d91b73d7e6e0, type: 3}
+      propertyPath: knockBack
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3342430071827621966, guid: 759e18371f22fa24dbf3d91b73d7e6e0, type: 3}
